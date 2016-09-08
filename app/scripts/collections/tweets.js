@@ -1,16 +1,16 @@
 import Backbone from 'backbone';
-import tweet from '../models/tweet';
+
+import Tweet from '../models/tweet';
 import settings from '../settings';
 
-const tweets = Backbone.Collection.extend({
-
-  comparator: function( model ) {
-    return model.get( 'timestamp' );
+const Tweets = Backbone.Collection.extend({
+  comparator: function(model){
+    return model.get('timestamp');
   },
-  model: tweet,
-  url: `https://baas.kinvey.com/appdata/${ settings.appId }/tweets`
+  model: Tweet,
+  url: `https://baas.kinvey.com/appdata/${settings.appKey}/tweets`
 });
 
-let tweets = new tweets();
+let tweetsCollection = new Tweets();
 
-export default tweets;
+export default tweetsCollection;

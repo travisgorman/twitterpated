@@ -1,18 +1,16 @@
 import Backbone from 'backbone';
+
 import settings from '../settings';
 
-const tweet = Backbone.Model.extend({
-
+const Tweet = Backbone.Model.extend({
   idAttribute: '_id',
-  urlRoot: `https://baas.kinvey.com/appdata/${ settings.appId }/tweets`,
+  urlRoot: `https://baas.kinvey.com/appdata/${settings.appKey}/tweets`,
   defaults: {
-    author: '',
+    username: '',
     timestamp: new Date(),
-    body: ''
+    body: '',
+    author: ''
   }
-
 });
 
-window.tweet = tweet;
-
-export default tweet;
+export default Tweet;

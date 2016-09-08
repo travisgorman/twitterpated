@@ -1,48 +1,45 @@
 import Backbone from 'backbone';
+
 import settings from '../settings';
 import router from '../router';
+import User from './user';
 
 const Session = Backbone.Model.extend({
-  urlRoot: `https://baas.kinvey.com/user/${ settings.appId }/login`,
-
+  urlRoot: `https://baas.kinvey.com/user/${settings.appKey}/login`,
   defaults: {
-      username: '',
-      authtoken: ''
+    username: '',
   },
-
-
-  parse: function( response ) {
-    if ( response ) {
+  parse: function(response){
+    if (response) {
       return {
-        authtoken: response._kmd.authtoken,
         username: response.username,
-        userId: response._id
+        userId: response._id,
+        authtoken: response._kmd.authtoken
       };
     }
   },
-
-  login: function( username, password ) {
-    this.save({
-        username: username,
-        password: password
-    }, {
-      success: ( model, response) => {
-        this.unset( 'password' );
-        window.localStorage.setItem( 'authtoken', response._kmd.authtoken );
-        router.navigate( 'posts', {trigger: true} );
-        console.log( 'success! you logged in a user' );
+  //local storage is specific to the url (only stored on my browser on that website's page/url)
+  //session is still tied to the tab
+  login: function(username, password) {
+  this.save({'username': username, 'password': password},
+     {
+      success: (model, response) => {
+          this.unset('password');
+          console.log(model, ' session: model ');
+          window.localStorage.setItem('authtoken', response._kmd.authtoken);
+          router.navigate(`user/${model.get('_id')}`, {trigger:true});
+      },
+      error: function() {
+          console.log('ERROR! User failed to login! See session.js');
+        }
+      });
     },
-
-    error: function() {
-      console.log( 'ERR! you did not log in a user' );
-    }});
-  },
-
-  retrieve: function() {
-    this.fetch({
-      url: `https://baas.kinvey.com/user/${ settings.appId }/_me`
-    });
-  }
+    retrieve: function(){
+      //get a rest api so you can figure out who you are on the server
+      this.fetch({
+        url: `https://baas.kinvey.com/user/${settings.appKey}/_me`
+      });
+    }
 });
 
 let session = new Session();
