@@ -1,10 +1,8 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-
 import router from '../router';
 import settings from '../settings';
 import session from '../models/session';
-// import User from '../models/user';
 import SignupView from './signupView';
 
 const LoginView = Backbone.View.extend({

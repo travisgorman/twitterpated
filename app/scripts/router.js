@@ -1,9 +1,7 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-
 import settings from './settings';
 import tweetsCollection from './collections/Tweets';
-
 import session from './models/session';
 import LoginView from './views/loginView';
 import LogoutView from './views/logoutView';

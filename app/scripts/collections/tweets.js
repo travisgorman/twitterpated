@@ -1,5 +1,4 @@
 import Backbone from 'backbone';
-
 import Tweet from '../models/tweet';
 import settings from '../settings';
 

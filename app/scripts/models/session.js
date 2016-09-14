@@ -1,5 +1,4 @@
 import Backbone from 'backbone';
-
 import settings from '../settings';
 import router from '../router';
 import User from './user';
@@ -18,8 +17,6 @@ const Session = Backbone.Model.extend({
       };
     }
   },
-  //local storage is specific to the url (only stored on my browser on that website's page/url)
-  //session is still tied to the tab
   login: function(username, password) {
   this.save({'username': username, 'password': password},
      {
@@ -30,12 +27,11 @@ const Session = Backbone.Model.extend({
           router.navigate(`user/${model.get('_id')}`, {trigger:true});
       },
       error: function() {
-          console.log('ERROR! User failed to login! See session.js');
+          console.log('ERROR!');
         }
       });
     },
     retrieve: function(){
-      //get a rest api so you can figure out who you are on the server
       this.fetch({
         url: `https://baas.kinvey.com/user/${settings.appKey}/_me`
       });

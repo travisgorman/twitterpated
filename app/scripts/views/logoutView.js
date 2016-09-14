@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-
 import router from '../router';
 import settings from '../settings';
 import session from '../models/session';
@@ -11,19 +10,19 @@ const LogoutView = Backbone.View.extend({
     events: {
         'click .logout-btn': 'logoutFunction'
     },
-    logoutFunction: function(evt) {
-        evt.preventDefault();
+    logoutFunction: function(e) {
+        e.preventDefault();
         session.save(null, {
             url: `https://baas.kinvey.com/user/${settings.appKey}/_logout`,
             success: function(model, response) {
                 model.unset('password');
                 localStorage.removeItem('authtoken');
                 router.navigate('login', {trigger:true});
-                console.log('User logged out!');
+                // console.log('User logged out!');
             }});
     },
     error: function() {
-        console.log('ERROR! User failed to signup! See logoutView.js');
+        console.log('ERROR! User failed to signup!');
     },
     template: function() {
             return `

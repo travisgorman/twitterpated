@@ -1,5 +1,4 @@
 import Backbone from 'backbone';
-
 import settings from '../settings';
 
 const Tweet = Backbone.Model.extend({
