@@ -1,5 +1,4 @@
 import Backbone from 'backbone';
-
 import User from '../models/user';
 import settings from '../settings';
 

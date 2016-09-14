@@ -1,24 +1,25 @@
-import $ from 'jquery';
-import Backbone from 'backbone';
-import settings from './settings';
-import tweetsCollection from './collections/Tweets';
-import session from './models/session';
-import LoginView from './views/loginView';
-import LogoutView from './views/logoutView';
-import ProfileView from './views/profileView';
-import TweetPageView from './views/tweetPageView';
-import SignupView from './views/signupView';
-import FeedView from './views/feedView';
-import TweetView from './views/tweetView';
-import TweetPost from './views/tweetPost';
+import $ from 'jquery'
+import Backbone from 'backbone'
+import settings from './settings'
+import tweetsCollection from './collections/Tweets'
+import session from './models/session'
+import LoginView from './views/loginView'
+import LogoutView from './views/logoutView'
+import ProfileView from './views/profileView'
+import TweetPageView from './views/tweetPageView'
+import SignupView from './views/signupView'
+import FeedView from './views/feedView'
+import TweetView from './views/tweetView'
+import TweetPost from './views/tweetPost'
+import EditView from './views/editView'
 
 const Router = Backbone.Router.extend({
   routes : {
-    '/*'           :  'loginFunction',
+    '/*'             :  'loginFunction',
     'login'          :  'loginFunction',
-    'login/signup' :  'signupFunction',
-    'logout'      :   'logoutFunction',
-    'user/:id' :  'profileFunction'
+    'login/signup'   :  'signupFunction',
+    'logout'         :  'logoutFunction',
+    'user/:id'       :  'profileFunction'
   },
   loginFunction : function(){
     tweetsCollection.off();
@@ -43,6 +44,11 @@ const Router = Backbone.Router.extend({
                    .append(profile.$el)
                    .append(tweetPageView.render().$el);
 
+  },
+  editFunction: function () {
+    $.ajax({
+      url: `https://baas.kinvey.com/`
+    })
   }
 });
 

@@ -18,11 +18,9 @@ const SignupView = Backbone.View.extend({
         evt.preventDefault();
         $('.login-modal').addClass('signup-view');
         localStorage.removeItem('authtoken');
-        // $('.signup-modal').toggleClass('showSignup');
         let username = this.$('input[name="username"]').val();
         let password = this.$('input[name="password"]').val();
         let password2 = this.$('input[name="password2"]').val();
-
         if (password !== password2){
           console.log('your passwords don\'t match!');
         } else {
@@ -53,11 +51,28 @@ const SignupView = Backbone.View.extend({
     template: function() {
         return `
           <h3>Sign Up</h3>
-          <input type="text" name="username" placeholder="username" />
-          <input type="password" name="password" placeholder="password" />
-          <input type="password" name="password2" placeholder="confirm password" />
-          <input id="signup-btn" type="submit" name="sign up" placeholder="sign up" />
-          <input class="cancel-btn" type="button" name="cancel" value="cancel" />
+            <input
+              type="text"
+              name="username"
+              placeholder="username" />
+            <input
+              type="password"
+              name="password"
+              placeholder="password" />
+            <input
+              type="password"
+              name="password2"
+              placeholder="confirm password" />
+            <input
+              id="signup-btn"
+              type="submit"
+              name="sign up"
+              placeholder="sign up" />
+            <input
+              class="cancel-btn"
+              type="button"
+              name="cancel"
+              value="cancel" />
           `;
     },
     render: function() {

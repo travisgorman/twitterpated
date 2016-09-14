@@ -26,17 +26,28 @@ const ProfileView = Backbone.View.extend({
     console.log(currentModel);
     return `
       <div id="short-bio">
-        <h2>${this.model.get('firstname')} ${this.model.get('lastname')}</h2>
-        <h4>@${this.model.get('username')}</h2>
-        <p>a little quote I wrote</p>
-        <data>birthday ${this.model.get('birthdayMonth')} ${this.model.get('birthdayDay')}, ${this.model.get('birthdayYear')}</data>
+        <h2>
+          ${this.model.get('firstname')} ${this.model.get('lastname')}
+        </h2>
+        <h4>
+          @${this.model.get('username')}
+        </h2>
+        <p>
+          a little quote I wrote
+        </p>
+        <data>
+          birthday
+          ${this.model.get('birthdayMonth')}
+          ${this.model.get('birthdayDay')},
+          ${this.model.get('birthdayYear')}
+        </data>
       </div>
       <nav class="nav-profile">
         <ul>
-          <li class="li1">tweets</li>
-          <li class="li2">following</li>
-          <li class="li3">followers</li>
-          <li class="li4">likes</li>
+          <li> tweets </li>
+          <li> following </li>
+          <li> followers </li>
+          <li> likes </li>
         </ul>
       </nav>
       `;

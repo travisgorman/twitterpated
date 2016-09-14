@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-
 import router from '../router';
 import tweetCollection from '../collections/Tweets';
 import session from '../models/session';
@@ -9,8 +8,9 @@ const TweetPost = Backbone.View.extend({
   tagName: 'form',
   className: 'tweetPost',
   events: {
-    'click .post-btn': 'postTweetFunction',
-    'keyup input[name="tweet-field"]': 'keyAction',
+    //on click or enter keyup
+    'click .post-btn'                : 'postTweetFunction',
+    'keyup input[name="tweet-field"]': 'keyAction'
   },
   keyAction: function(evt){
     evt.preventDefault();
@@ -37,13 +37,19 @@ const TweetPost = Backbone.View.extend({
       }
     });
   },
-  template: function(){
+  template: function () {
     return `
-        <input type="text" name="tweet-field" placeholder="tweet out" maxlength="140" />
-        <button class="post-btn">submit</button>
+        <input
+          type="text"
+          name="tweet-field"
+          placeholder="compose all your tweets in here"
+          maxlength="140" />
+        <button class="post-btn">
+          submit
+        </button>
     `;
   },
-  render: function(){
+  render: function () {
       this.$el.html(this.template());
       return this;
   }

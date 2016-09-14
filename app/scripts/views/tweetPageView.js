@@ -1,6 +1,5 @@
 import Backbone from 'backbone';
 import TweetPost from './tweetPost';
-// import TweetView from './tweetView';
 import FeedView from './feedView';
 
 const TweetPageView = Backbone.View.extend({

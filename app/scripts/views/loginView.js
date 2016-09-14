@@ -28,13 +28,31 @@ const LoginView = Backbone.View.extend({
         return `
       <form class="login-modal">
         <h1>Twitterpated</h1>
-        <h3>Log in to your account</h3>
-        <input id="username" type="text" name="username" placeholder="username" />
-        <input id="password" type="password" name="password" placeholder="password" />
-        <input id="login-btn" type="submit" name="submit" placeholder="Log in" />
+        <input 
+          id="username" 
+          type="text" 
+          name="username" 
+          placeholder="username" />
+        <input 
+          id="password" 
+          type="password" 
+          name="password" 
+          placeholder="password" />
+        <input 
+          id="login-btn" 
+          type="submit" 
+          name="submit" 
+          placeholder="Log in" />
         <section class="register">
-            <h3>Not Registered? Sign Up</h3>
-            <button id="signup-btn" type="button" name="signup-btn">Sign Up</button>
+          <h3> 
+            Not Registered? Sign Up
+          </h3>
+          <button 
+            id="signup-btn" 
+            type="button" 
+            name="signup-btn">
+            Sign Up
+          </button>
         </section>
       </form>
       `;
