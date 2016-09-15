@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import router from './router';
 import settings from './settings';
-import sessn from './models/session';
+import session from './models/session';
 
 $(document).ajaxSend(function(evt, xhrAjax, jqueryAjax){
   if (localStorage.getItem('authtoken')){
@@ -20,6 +20,4 @@ if (!localStorage.getItem('authtoken')) {
   session.retrieve();
 }
 
-
-console.log(settings);
-console.log( Backbone );
+console.log(session);

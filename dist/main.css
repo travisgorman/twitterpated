@@ -24,7 +24,8 @@ h5.userLink {
   font-size: 2rem;
   color: #EF476F;
   font-family: sans-serif;
-  text-align: center; }
+  text-align: center;
+  border: 1px solid red; }
 
 .tweet {
   padding: 1.5rem;

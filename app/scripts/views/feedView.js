@@ -1,18 +1,18 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-import tweetCollection from '../collections/Tweets';
+import tweetcollection from '../collections/Tweets';
 import Tweet from '../models/tweet';
 import TweetView from './tweetView';
 
 const FeedView = Backbone.View.extend({
   initialize: function(){
-    tweetCollection.on('add', () => {
+    tweetcollection.on('add', () => {
       this.render();
     });
-    tweetCollection.on('remove', () => {
+    tweetcollection.on('remove', () => {
       this.render();
     });
-    tweetCollection.fetch();
+    tweetcollection.fetch();
   },
   tagName: 'div',
   className: 'tweets-feed',
@@ -24,7 +24,7 @@ const FeedView = Backbone.View.extend({
   },
   render: function(){
     this.$el.html(this.template());
-    tweetCollection.forEach((tweet) => {
+    tweetcollection.forEach((tweet) => {
       var tweetItem = new TweetView({
         model: tweet
       });
@@ -33,18 +33,15 @@ const FeedView = Backbone.View.extend({
   });
     return this;
   }
-
 });
-
 export default FeedView;
-
-<input
-  data-id="${tweet.get('_id')}"
-  type="button"
-  class="editbumbl"
-  value="EDIT">
-<input
-  data-id="${tweet.get('_id')}"
-  type="button"
-  class="deleteTweet"
-  value="DELETE">
+// <input
+//   data-id="${tweet.get('_id')}"
+//   type="button"
+//   class="editbumbl"
+//   value="EDIT">
+// <input
+//   data-id="${tweet.get('_id')}"
+//   type="button"
+//   class="deleteTweet"
+//   value="DELETE">

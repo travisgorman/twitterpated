@@ -10,6 +10,6 @@ const Tweets = Backbone.Collection.extend({
   url: `https://baas.kinvey.com/appdata/${settings.appKey}/tweets`
 });
 
-let tweetsCollection = new Tweets();
+let tweetcollection = new Tweets();
 
-export default tweetsCollection;
+export default tweetcollection;

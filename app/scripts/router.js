@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
 import settings from './settings'
-import tweetsCollection from './collections/Tweets'
+import tweetcollection from './collections/Tweets'
 import session from './models/session'
 import LoginView from './views/loginView'
 import LogoutView from './views/logoutView'
@@ -20,10 +20,10 @@ const Router = Backbone.Router.extend({
     'login/signup'   :  'signupFunction',
     'logout'         :  'logoutFunction',
     'user/:id'       :  'profileFunction',
-    'edit'           : 'editFunction'
+    // 'edit'           : 'editFunction'
   },
   loginFunction : function(){
-    tweetsCollection.off();
+    tweetcollection.off();
     let login = new LoginView();
     login.render();
     $('.container').empty().append(login.$el);
@@ -32,11 +32,11 @@ const Router = Backbone.Router.extend({
     router.navigate('login/signup', {trigger:true});
   },
   logoutFunction : function(){
-    tweetsCollection.off();
+    tweetcollection.off();
     router.navigate('login', {trigger: true});
   },
   profileFunction : function(id){
-    tweetsCollection.off();
+    tweetcollection.off();
     let logout = new LogoutView();
     let profile = new ProfileView(id);
     let tweetPageView = new TweetPageView();

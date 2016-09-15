@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Backbone from 'backbone';
 import settings from '../settings';
 import userCollection from '../collections/Users';
-import tweetsCollection from '../collections/Tweets';
+import tweetcollection from '../collections/Tweets';
 import session from '../models/session';
 
 const ProfileView = Backbone.View.extend({
@@ -26,7 +26,8 @@ const ProfileView = Backbone.View.extend({
     return `
       <div id="short-bio">
         <h2>
-          ${this.model.get('firstname')} ${this.model.get('lastname')}
+          ${this.model.get('firstname')};
+          ${this.model.get('lastname')};
         </h2>
         <h4>
           @${this.model.get('username')}

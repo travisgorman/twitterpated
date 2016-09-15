@@ -26,6 +26,7 @@ h5.userLink {
   color: #EF476F;
   font-family: sans-serif;
   text-align: center;
+  border: 1px solid red;
 }
 
 .tweet {
@@ -36,6 +37,19 @@ h5.userLink {
 .tweetPageView {
   padding: 3rem;
   border-radius: 9px;
+}
+ul.ul-feed {
+  li.tweetli {
+    section.tweet-user-info {
+      ul.edit-btns {}
+      h5.userLink {}
+
+      }
+    main {
+      p.tweet {}
+      p.timestamp {}
+    }
+  }
 }
 .compose {
   color: #B2CCD6;

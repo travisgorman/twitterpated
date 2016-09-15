@@ -4,7 +4,8 @@ import tweets from '../collections/Tweets'
 
 const editTweet = Backbone.View.extend({
   initialize: function(id){
-    this.model = tweets.get(id)
+    this.model = tweets.get(id);
+    console.log(this.model)
   },
   tagName: 'form',
   className: 'editTweet',
@@ -13,11 +14,15 @@ const editTweet = Backbone.View.extend({
   },
   editTweetFunction: (evt) => {
     if (evt.which === 13) {
-      this.model.save({
-        // tweetCollection.save({
-        body: $('input').val() }, {
-          success: (response) => {
-            console.log(response);
+      this.model.save(
+        {
+          body: $('input').val()
+        }, {
+          success: (model, response) => {
+            console.log( model, response);
+          },
+          error: function () {
+            console.log('NOPE')
           }
         };
     }

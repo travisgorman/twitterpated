@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 
 import settings from '../settings';
 import userCollection from '../collections/Users';
-import tweetsCollection from '../collections/Tweets';
+import tweetcollection from '../collections/Tweets';
 
 import session from '../models/session';
 // import User from '../models/user';
@@ -25,17 +25,17 @@ const ProfileView = Backbone.View.extend({
       //   url: `https://baas.kinvey.com/user/${settings.appKey}/?query={"username":"${username}"}`,
       //   success: (response) =>{
       //     this.model = response.models[0];
-      //     tweetsCollection.on('add', () => {
+      //     tweetcollection.on('add', () => {
       //       this.render();
       //     });
       //   }
       // });
 
-      // tweetsCollection.fetch({
+      // tweetcollection.fetch({
       //   url: `https://baas.kinvey.com/user/${settings.appKey}/?query={"username":"${username}"}`,
       //   success: (response) =>{
       //     this.model = response.models[0];
-      //     tweetsCollection.on('add', () => {
+      //     tweetcollection.on('add', () => {
       //       this.render();
       //     });
       //   }

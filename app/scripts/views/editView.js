@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
-import tweetCollection from '../collections/Tweets';
+import tweetcollection from '../collections/Tweets';
 import session from '../models/session';
 
 const EditView = Backbone.View.extend({
@@ -10,7 +10,7 @@ const EditView = Backbone.View.extend({
     'click .edit-btn': 'editTweetFunction'
   },
   editTweetFunction: function(evt) {
-    tweetCollection.save({
+    tweetcollection.save({
       body : this.$('input[name="tweet-field"]').val()
     },{
       success: () => {
