@@ -1,1 +1,1 @@
-console.error("Error: Cannot find module './editView' from '/Users/travisgorman/_Projects/_twitterpated/app/scripts/views'");
+console.error("SyntaxError: /Users/travisgorman/_Projects/_twitterpated/app/scripts/views/tweetView.js: Unexpected token (18:26) while parsing file: /Users/travisgorman/_Projects/_twitterpated/app/scripts/views/tweetView.js");

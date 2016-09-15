@@ -37,3 +37,14 @@ const FeedView = Backbone.View.extend({
 });
 
 export default FeedView;
+
+<input
+  data-id="${tweet.get('_id')}"
+  type="button"
+  class="editbumbl"
+  value="EDIT">
+<input
+  data-id="${tweet.get('_id')}"
+  type="button"
+  class="deleteTweet"
+  value="DELETE">

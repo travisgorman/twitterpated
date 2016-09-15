@@ -15,7 +15,7 @@ const ProfileView = Backbone.View.extend({
       this.model = userCollection.get(id);
       console.log(userCollection.get(id));
       this.model.fetch();
-      this.model.on('change', () =>{
+      this.model.on('change', () => {
         this.render();
       });
   },
@@ -23,7 +23,6 @@ const ProfileView = Backbone.View.extend({
   className: 'profile',
   events: {},
   template: () => {
-    console.log(currentModel);
     return `
       <div id="short-bio">
         <h2>

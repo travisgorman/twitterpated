@@ -19,7 +19,8 @@ const Router = Backbone.Router.extend({
     'login'          :  'loginFunction',
     'login/signup'   :  'signupFunction',
     'logout'         :  'logoutFunction',
-    'user/:id'       :  'profileFunction'
+    'user/:id'       :  'profileFunction',
+    'edit'           : 'editFunction'
   },
   loginFunction : function(){
     tweetsCollection.off();
@@ -44,12 +45,12 @@ const Router = Backbone.Router.extend({
                    .append(profile.$el)
                    .append(tweetPageView.render().$el);
 
-  },
-  editFunction: function () {
-    $.ajax({
-      url: `https://baas.kinvey.com/`
-    })
   }
+  // editFunction: function () {
+  //   $.ajax({
+  //     url: `https://baas.kinvey.com/`
+  //   })
+  // }
 });
 
 const router = new Router();

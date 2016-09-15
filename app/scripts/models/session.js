@@ -18,13 +18,12 @@ const Session = Backbone.Model.extend({
     }
   },
   login: function(username, password) {
-  this.save({'username': username, 'password': password},
-     {
+  this.save({ 'username': username, 'password': password },{
       success: (model, response) => {
           this.unset('password');
-          console.log(model, ' session: model ');
+          console.log(model, '<=== session: model');
           window.localStorage.setItem('authtoken', response._kmd.authtoken);
-          router.navigate(`user/${model.get('_id')}`, {trigger:true});
+          router.navigate( `user/${model.get('userId')}`, {trigger:true});
       },
       error: function() {
           console.log('ERROR!');

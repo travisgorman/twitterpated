@@ -6,28 +6,53 @@ import EditView from './editView';
 import settings from '../settings'
 
 const TweetView = Backbone.View.extend({
+  initialize: function (id) {
+    this.model = tweets.get(id);
+  },
     tagName: 'li',
     className: 'tweetItem',
     events: {
         'click .delete'   : 'deleteFunction',
         'click .edit'     : 'editFunction',
-        'click .userLink' : 'routeProfileFunction'
+        'click .userLink' : 'routeProfileFunction',
+        'keydown input' : : 'editTweetFunction'
     },
     deleteFunction: function(evt) {
+      console.log(evt)
+      let thing = this.model;
+      console.log(thing)
         evt.preventDefault();
         this.model.destroy();
     },
-    editFunction: function(evt) {
-        evt.preventDefault();
-        router.navigate('edit', {
-            trigger: true
+    editFunction: function(evt){
+      let temp = $(evt.target).parent().find('.tweet').text();
+      $evt.target.parent().empty().prepend(`
+        <textarea class = 'editbox'> ${temp}</textarea>
+        <input type = button class = "resubmit" value = "resubmit" >
+      `);
+       $('.resubmit').click( () => {
+          let editTweet1 = tweets.get( evt.target.dataset.id );
+          editTweet1.set({
+            body: ${'.editbox'}.val(),
+            timestame: new Date()
+          });
+          editTweet.save( null, {
+            success: function(){
+              tweetsCollection.fetch();
+            },
+          error: function() {
+            console.log( 'You edited NOTHING! Ha HA!' );
+          }
         });
+     });
+   },
+    editTweetFunction: function(evt) {
+        evt.preventDefault();
+        router.navigate('edit', { trigger: true });
     },
     routeProfileFunction: function(evt) {
         evt.preventDefault();
-        router.navigate(`user/${this.model.get('author')}`, {
-            trigger: true
-        });
+        router.navigate(`user/ ${this.model.get('author')}`, { trigger: true });
     },
     template: function() {
         if (session.get('username') !== this.model.get('author')) {
@@ -60,19 +85,22 @@ const TweetView = Backbone.View.extend({
                 </p>
                   <ul class="edit-btns">
                     <li>
-                      <button class="edit">
+                      <button id="edit"
+                        class ="edit" >
                         Edit
                       </button>
                     </li>
                     <li>
-                    <button class="delete">
+                    <button
+                      id = "delete"
+                      class = "delete" >
                       Delete
-                      </button>
+                    </button>
                     </li>
                   </ul>
                 </section>
                 <main>
-                  <p class="tweet" contenteditable=true>
+                  <p class="tweet" contenteditable = true >
                     ${this.model.get('body')}
                   </p>
                   <p class="timestamp">
